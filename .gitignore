@@ -1,0 +1,6 @@
+data
+build
+src/*.o
+obj
+.vscode
+lib
