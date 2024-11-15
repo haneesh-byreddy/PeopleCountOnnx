@@ -47,7 +47,12 @@ int main()
         int frameIndex = 0;
         while (frameQueue.dequeue(frame))
         {
+
+            auto start = std::chrono::high_resolution_clock::now();
             cv::Mat result = detector.detect(frame);
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+            std::cout << "Time taken: " << duration.count() << " ms" << std::endl;
             processedQueue.enqueue(result);
         }
         processedQueue.setFinished(); 

@@ -163,7 +163,7 @@ cv::Mat Detector::postprocess(cv::Mat &frame, float *output_data, std::vector<in
             color = cv::Scalar(0, 0, 255);
         }
         cv::rectangle(resizedImage, cv::Point(left, top), cv::Point(right, bottom), color, 1);
-        std::string label = "Score: " + std::to_string(score) + " Class : " + std::to_string(class_id);
+        std::string label = "Score: " + std::to_string(score).substr(0, 4) + " Class : " + std::to_string(class_id);
         cv::putText(resizedImage, label, cv::Point(left, top - 10), cv::FONT_HERSHEY_SIMPLEX, 0.5, color, 0, 0);
     }
     cv::Mat output_frame;
